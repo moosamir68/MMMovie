@@ -11,7 +11,7 @@ import Foundation
 struct MovieDetail: Codable {
     var adult:Bool? = false
     var backdropPath:String? = ""
-    var belongsToCollection:[Collection]? = []
+    var belongsToCollection:Collection?
     var budget:Double? = 0
     var genres:[Genre]? = []
     var homepage:String? = ""

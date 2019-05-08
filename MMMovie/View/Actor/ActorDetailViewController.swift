@@ -104,6 +104,7 @@ class ActorDetailViewController: MasterViewController {
             self.setShowOrHideView(view: self.placeOfBirthdayStackView, hide: true)
         }
         
+        //check for birthday
         if(self.viewModel.canShowBirthdayView()){
             self.setShowOrHideView(view: self.birhdayStackView, hide: false)
             self.birthdayVauleLabel.text = self.viewModel.getBirthday()
@@ -111,6 +112,7 @@ class ActorDetailViewController: MasterViewController {
             self.setShowOrHideView(view: self.birhdayStackView, hide: true)
         }
         
+        //check for deatchday
         if(self.viewModel.canShowDeathdayView()){
             self.setShowOrHideView(view: self.deathDayStackView, hide: false)
             self.deatchDayValueLabel.text = self.viewModel.getDeathday()
@@ -118,6 +120,7 @@ class ActorDetailViewController: MasterViewController {
             self.setShowOrHideView(view: self.deathDayStackView, hide: true)
         }
         
+        //check for popularity
         if(self.viewModel.canShowPopularityView()){
             self.setShowOrHideView(view: self.popularityStackView, hide: false)
             self.popularityValueLabel.text = self.viewModel.getPopularity()
@@ -125,6 +128,7 @@ class ActorDetailViewController: MasterViewController {
             self.setShowOrHideView(view: self.popularityStackView, hide: true)
         }
         
+        //check for department
         if(self.viewModel.canShowDepartmentView()){
             self.setShowOrHideView(view: self.departmentStackView, hide: false)
             self.departmentValueLabel.text = self.viewModel.getDepartment()
@@ -132,6 +136,7 @@ class ActorDetailViewController: MasterViewController {
             self.setShowOrHideView(view: self.departmentStackView, hide: true)
         }
         
+        //check for also know
         if(self.viewModel.canShowAlsoKnowView()){
             self.setShowOrHideView(view: self.alsoKnowsStackView, hide: false)
             self.alsoKnowValueLabel.text = self.viewModel.getAlsoKnow()
