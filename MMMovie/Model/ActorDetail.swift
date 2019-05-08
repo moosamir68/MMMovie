@@ -13,7 +13,6 @@ struct ActorDetail: Codable {
     var id:Int = 0
     var profilePath:String? = ""
     var name:String? = ""
-    var movies:[Movie]? = []
     var adult:Bool? = false
     var birthday:String? = ""
     var knownForDepartment:String? = ""
@@ -30,7 +29,6 @@ struct ActorDetail: Codable {
         case id
         case profilePath = "profile_path"
         case name
-        case movies = "known_for"
         case adult
         case birthday
         case knownForDepartment = "known_for_department"

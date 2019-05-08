@@ -25,8 +25,8 @@ extension HttpManager {
         queryParams["api_key"] = UrlManager.apiKey
         queryParams["language"] = "en-US"
         
-        let request = HttpManager.createRequest(method: .get, protocoll: .https, baseUrl: UrlManager.baseUrl, path: "person/\(id)", queryParams: queryParams, header: [:], contentType: .json, content: nil, token: nil, authType: nil, delegate: delegate, keyNameOfValue: "results")
+        let request = HttpManager.createRequest(method: .get, protocoll: .https, baseUrl: UrlManager.baseUrl, path: "person/\(id)", queryParams: queryParams, header: [:], contentType: .json, content: nil, token: nil, authType: nil, delegate: delegate, keyNameOfValue: nil)
         
-        self.sendRequest(request: request, responseType: [ActorDetail].self)
+        self.sendRequest(request: request, responseType: ActorDetail.self)
     }
 }
