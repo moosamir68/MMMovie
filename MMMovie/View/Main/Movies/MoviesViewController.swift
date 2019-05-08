@@ -40,6 +40,7 @@ class MoviesViewController: MasterCollectionViewController {
     func updateContent(movies:[Movie], pageIndex:Int){
         self.viewModel.bindMovies(movies: movies, pageIndex: pageIndex)
         self.updateUiContentofPageControll()
+        self.collectionView.reloadData()
     }
     
     //MARK:- init ui

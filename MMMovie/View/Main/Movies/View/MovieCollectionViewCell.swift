@@ -26,11 +26,25 @@ class MovieCollectionViewCell: UICollectionViewCell {
 
     //MARK:- init ui
     private func initUI(){
-        self.movieImageView.backgroundColor = .red
+        
     }
     
     //MARK:- fill data
     func fillData(movie:Movie){
         self.movie = movie
+        
+        let imagePathString = UrlManager.getMovieImagePath(image: movie.backdropPath!)
+        ImageCacheLoader.sharedInstanse.obtainImageWithPath(imagePath: imagePathString, placeHolder: #imageLiteral(resourceName: "MoviePlaceHolder")) {[weak self] (image, imagePath) in
+            guard imagePath == self?.getImagePath() else{
+                self?.movieImageView.image = #imageLiteral(resourceName: "MoviePlaceHolder")
+                return;
+            }
+            
+            self?.movieImageView.image = image
+        }
+    }
+    
+    private func getImagePath() ->String{
+        return UrlManager.getMovieImagePath(image: self.movie.backdropPath!)
     }
 }

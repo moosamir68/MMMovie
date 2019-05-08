@@ -59,6 +59,8 @@
 		44CCE4692282EDC900EDD3EC /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CCE4672282EDC900EDD3EC /* MovieCollectionViewCell.xib */; };
 		44CCE46D2282FCD600EDD3EC /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE46B2282FCD600EDD3EC /* MovieDetailViewController.swift */; };
 		44CCE46E2282FCD600EDD3EC /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CCE46C2282FCD600EDD3EC /* MovieDetailViewController.xib */; };
+		44CCE470228318DA00EDD3EC /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE46F228318DA00EDD3EC /* ImageDownloader.swift */; };
+		44CCE4722283279E00EDD3EC /* UrlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE4712283279E00EDD3EC /* UrlManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		44CCE4672282EDC900EDD3EC /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		44CCE46B2282FCD600EDD3EC /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		44CCE46C2282FCD600EDD3EC /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		44CCE46F228318DA00EDD3EC /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		44CCE4712283279E00EDD3EC /* UrlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +268,7 @@
 				44CCE3E22280A2DC00EDD3EC /* Request */,
 				44CCE3FB2280A34C00EDD3EC /* HttpManager.swift */,
 				44CCE40522817F4D00EDD3EC /* MovieListHManager.swift */,
+				44CCE4712283279E00EDD3EC /* UrlManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				44CCE40922818E4E00EDD3EC /* MovieHttp.swift */,
 				44CCE40D2281ABA900EDD3EC /* MovieResponse.swift */,
 				44CCE40F2281C04200EDD3EC /* ResponeHandler.swift */,
+				44CCE46F228318DA00EDD3EC /* ImageDownloader.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 				44CCE46D2282FCD600EDD3EC /* MovieDetailViewController.swift in Sources */,
 				44CCE45D2282E0DE00EDD3EC /* FavoretiesViewController.swift in Sources */,
 				44CCE3D7227DFCDC00EDD3EC /* ActorDetailViewController.swift in Sources */,
+				44CCE4722283279E00EDD3EC /* UrlManager.swift in Sources */,
 				44CCE41F2281C43900EDD3EC /* ErrorTableViewCell.swift in Sources */,
 				44CCE4632282ED4900EDD3EC /* ErrorCollectionViewCell.swift in Sources */,
 				44CCE42C2281CB4C00EDD3EC /* Movie.swift in Sources */,
@@ -609,6 +616,7 @@
 				44CCE4602282ED2400EDD3EC /* MasterCollectionViewController.swift in Sources */,
 				44CCE4212281C56D00EDD3EC /* FactoryViewModel.swift in Sources */,
 				44CCE4182281C29600EDD3EC /* MasterViewController.swift in Sources */,
+				44CCE470228318DA00EDD3EC /* ImageDownloader.swift in Sources */,
 				44CCE4242281C6E500EDD3EC /* ActorTableViewCell.swift in Sources */,
 				44CCE40A22818E4E00EDD3EC /* MovieHttp.swift in Sources */,
 				44CCE4682282EDC900EDD3EC /* MovieCollectionViewCell.swift in Sources */,

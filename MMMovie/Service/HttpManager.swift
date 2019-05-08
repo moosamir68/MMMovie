@@ -4,9 +4,6 @@ import Foundation
 struct HttpManager {
 //    static let sharedInstanse:HttpManager = HttpManager()
     
-    static var baseUrl = "api.themoviedb.org/3"
-    static var apiKey = "bf887a4f799f533b9e5c816ff0fd2089"
-    
     //MARK:- private properties
     private static var requests:[MovieRequest] = []
     

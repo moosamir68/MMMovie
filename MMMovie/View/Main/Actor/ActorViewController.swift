@@ -15,7 +15,6 @@ import UIKit
 class ActorViewController: MasterViewController {
     
     @IBOutlet weak var actorNameLabel: UILabel!
-    @IBOutlet weak var actorPopularityLabel: UILabel!
     @IBOutlet weak var actorImageView: UIImageView!
     
     //MARK:- private properties
@@ -39,6 +38,9 @@ class ActorViewController: MasterViewController {
         
         let tapGestureOnBoxView = UITapGestureRecognizer(target: self, action: #selector(ActorViewController.userDidTapOnBoxView))
         self.boxView.addGestureRecognizer(tapGestureOnBoxView)
+        
+        self.actorImageView.layer.cornerRadius = 28.0
+        self.actorImageView.layer.masksToBounds = true
     }
     
     //MARK:- public methods
@@ -50,6 +52,16 @@ class ActorViewController: MasterViewController {
     //MARK:- priva methods
     private func updateContentUIAfterChangeDataFromParent(){
         self.actorNameLabel.text = self.viewModel.actor.name
+        
+        let imagePathString = self.viewModel.getImagePath()
+        ImageCacheLoader.sharedInstanse.obtainImageWithPath(imagePath: imagePathString, placeHolder: #imageLiteral(resourceName: "AccountPlaceHolder")) {[weak self] (image, imagePath) in
+            guard imagePath == self?.viewModel.getImagePath() else{
+                self?.actorImageView.image = #imageLiteral(resourceName: "AccountPlaceHolder")
+                return;
+            }
+            
+            self?.actorImageView.image = image
+        }
     }
     
     //MARK:- user did tap

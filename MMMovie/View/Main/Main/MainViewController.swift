@@ -77,7 +77,8 @@ class MainViewController: MasterTableViewController {
     
     private func getHeightForRow() ->CGFloat{
         guard self.checkIsEmptyData()else{
-            return self.tableView.frame.width + 64.0
+            //500 is image width for movies
+            return self.tableView.frame.width * (281.0 / 500.0) + 64.0
         }
         
         return self.tableView.frame.height
