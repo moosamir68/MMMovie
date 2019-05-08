@@ -118,9 +118,22 @@ extension MainViewController:ActorCellDelegate{
     
     func getActorCellController(viewModel: ActorCellViewModel) -> ActorCellViewController {
         let itemSize = CGSize(width: self.tableView.frame.width, height: self.getHeightForRow())
-        let actorCellController = ActorCellViewController(viewModel: viewModel, size: itemSize)
+        let actorCellController = ActorCellViewController(viewModel: viewModel, size: itemSize, delegate:self)
         self.addChild(actorCellController)
         actorCellController.didMove(toParent: self)
         return actorCellController
     }
+}
+
+extension MainViewController:ActorCellControllerDelegate{
+    func showMovieDetail(movie: Movie) {
+        let movieDetailController = MovieDetailViewController()
+        self.navigationController?.pushViewController(movieDetailController, animated: true)
+    }
+    
+    func showActorDetail(actor: Actor) {
+        let actorDetailController = ActorDetailViewController()
+        self.navigationController?.pushViewController(actorDetailController, animated: true)
+    }
+    
 }

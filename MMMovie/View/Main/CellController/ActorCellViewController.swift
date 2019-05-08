@@ -6,6 +6,11 @@
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
 
+protocol ActorCellControllerDelegate:class {
+    func showActorDetail(actor:Actor)
+    func showMovieDetail(movie:Movie)
+}
+
 import UIKit
 
 class ActorCellViewController: MasterViewController {
@@ -15,16 +20,19 @@ class ActorCellViewController: MasterViewController {
     
     //MARK:- private properties
     private var viewModel:ActorCellViewModel
+    private weak var delegate:ActorCellControllerDelegate?
+    
     private var size:CGSize
     private var moviesCellSize:CGSize{get{return CGSize(width: self.size.width, height: self.size.height - 64)}}
-    
-    lazy private var actorViewController:ActorViewController = {return ActorViewController(actor: self.viewModel.getActor())}()
+
+    lazy private var actorViewController:ActorViewController = {return ActorViewController(actor: self.viewModel.getActor(), delegate:self)}()
     lazy private var moviesViewController:MoviesViewController = {return MoviesViewController(movies: self.viewModel.getMovies(), size: self.moviesCellSize, pageIndex:self.viewModel.pageIndexOfMovies, delegate:self)}()
     
     //MARK:- init
-    init(viewModel:ActorCellViewModel, size:CGSize) {
+    init(viewModel:ActorCellViewModel, size:CGSize, delegate:ActorCellControllerDelegate) {
         self.size = size
         self.viewModel = viewModel
+        self.delegate = delegate
         super.init(nibName: "ActorCellViewController", bundle: nil)
     }
     
@@ -71,5 +79,15 @@ class ActorCellViewController: MasterViewController {
 extension ActorCellViewController:MoviesControllerDelegate{
     func userChangePageIndex(pageIndex: Int) {
         self.viewModel.bindPageIndexOfMovies(pageIndex: pageIndex)
+    }
+    
+    func userSelectedMovie(movie: Movie) {
+        self.delegate?.showMovieDetail(movie: movie)
+    }
+}
+
+extension ActorCellViewController:ActorControllerDelegate{
+    func userSelectActor(actor: Actor) {
+        self.delegate?.showActorDetail(actor: actor)
     }
 }

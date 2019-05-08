@@ -6,6 +6,10 @@
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
 
+protocol ActorControllerDelegate:class {
+    func userSelectActor(actor:Actor)
+}
+
 import UIKit
 
 class ActorViewController: MasterViewController {
@@ -16,10 +20,12 @@ class ActorViewController: MasterViewController {
     
     //MARK:- private properties
     private var viewModel:ActorViewModel
+    private weak var delegate:ActorControllerDelegate?
     
     //MARK:- init
-    init(actor:Actor) {
+    init(actor:Actor, delegate:ActorControllerDelegate) {
         self.viewModel = FactoryViewModel.ActorViewModel(actor: actor)
+        self.delegate = delegate
         super.init(nibName: "ActorViewController", bundle: nil)
     }
     
@@ -30,6 +36,9 @@ class ActorViewController: MasterViewController {
     //MARK:- init ui
     override func initUI() {
         super.initUI()
+        
+        let tapGestureOnBoxView = UITapGestureRecognizer(target: self, action: #selector(ActorViewController.userDidTapOnBoxView))
+        self.boxView.addGestureRecognizer(tapGestureOnBoxView)
     }
     
     //MARK:- public methods
@@ -43,4 +52,8 @@ class ActorViewController: MasterViewController {
         self.actorNameLabel.text = self.viewModel.actor.name
     }
     
+    //MARK:- user did tap
+    @objc private func userDidTapOnBoxView(){
+        self.delegate?.userSelectActor(actor: self.viewModel.actor)
+    }
 }

@@ -8,6 +8,7 @@
 
 protocol MoviesControllerDelegate:class {
     func userChangePageIndex(pageIndex:Int)
+    func userSelectedMovie(movie:Movie)
 }
 
 import UIKit
@@ -69,7 +70,11 @@ class MoviesViewController: MasterCollectionViewController {
         }
         
         let movie = self.viewModel.movies[indexPath.row]
-        (cell as! MovieCollectionViewCell).fillData(movie: movie, delegate: self)
+        (cell as! MovieCollectionViewCell).fillData(movie: movie)
+    }
+    
+    override func userDidTapOnItem(select item: Any) {
+        self.delegate?.userSelectedMovie(movie: item as! Movie)
     }
     
     //MARK:- scrollview methods
@@ -97,8 +102,3 @@ class MoviesViewController: MasterCollectionViewController {
 }
 
 //MARK:- extentions
-extension MoviesViewController:MovieCollectionCellDelegate{
-    func userDidTapOnMovie(movie: Movie) {
-        
-    }
-}

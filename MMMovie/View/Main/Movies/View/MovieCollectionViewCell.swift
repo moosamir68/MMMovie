@@ -5,9 +5,6 @@
 //  Created by iOS Developer on 5/8/19.
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
-protocol MovieCollectionCellDelegate:class{
-    func userDidTapOnMovie(movie:Movie)
-}
 
 let identifireMovieCollectionViewCell = "MovieCollectionViewCell"
 
@@ -20,7 +17,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     //MARK:- private properties
     private var movie:Movie!
-    private weak var delegate:MovieCollectionCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,12 +26,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
 
     //MARK:- init ui
     private func initUI(){
-        self.boxView.backgroundColor = .red
+        self.movieImageView.backgroundColor = .red
     }
     
     //MARK:- fill data
-    func fillData(movie:Movie, delegate:MovieCollectionCellDelegate){
+    func fillData(movie:Movie){
         self.movie = movie
-        self.delegate = delegate
     }
 }
