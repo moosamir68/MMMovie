@@ -20,7 +20,7 @@ struct FactoryViewModel{
         return ActorViewModelImp(actor: actor)
     }
     
-    static func MoviesViewModel(movies:[Movie]) ->MoviesViewModel{
-        return MoviesViewModelImp(movies: movies)
+    static func MoviesViewModel(movies:[Movie], pageIndex:Int) ->MoviesViewModel{
+        return MoviesViewModelImp(movies: movies, pageIndex: pageIndex)
     }
 }

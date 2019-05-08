@@ -19,7 +19,7 @@ class ActorCellViewController: MasterViewController {
     private var moviesCellSize:CGSize{get{return CGSize(width: self.size.width, height: self.size.height - 64)}}
     
     lazy private var actorViewController:ActorViewController = {return ActorViewController(actor: self.viewModel.getActor())}()
-    lazy private var moviesViewController:MoviesViewController = {return MoviesViewController(movies: self.viewModel.getMovies(), size: self.moviesCellSize)}()
+    lazy private var moviesViewController:MoviesViewController = {return MoviesViewController(movies: self.viewModel.getMovies(), size: self.moviesCellSize, pageIndex:self.viewModel.pageIndexOfMovies, delegate:self)}()
     
     //MARK:- init
     init(viewModel:ActorCellViewModel, size:CGSize) {
@@ -43,7 +43,7 @@ class ActorCellViewController: MasterViewController {
     func updateContent(viewModel:ActorCellViewModel){
         self.viewModel = viewModel
         self.actorViewController.updateContent(actor: self.viewModel.getActor())
-        self.moviesViewController.updateContent(movies: self.viewModel.getMovies())
+        self.moviesViewController.updateContent(movies: self.viewModel.getMovies(), pageIndex: viewModel.pageIndexOfMovies)
     }
     
     //MARK:- private methods
@@ -64,5 +64,12 @@ class ActorCellViewController: MasterViewController {
     private func addSubViewToView(view:UIView, subView:UIView){
         view.addSubview(subView)
         subView.addConstaintsToSuperview()
+    }
+}
+
+//MARK:- extentions
+extension ActorCellViewController:MoviesControllerDelegate{
+    func userChangePageIndex(pageIndex: Int) {
+        self.viewModel.bindPageIndexOfMovies(pageIndex: pageIndex)
     }
 }

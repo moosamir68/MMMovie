@@ -50,6 +50,13 @@
 		44CCE4552281FCC000EDD3EC /* ActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE4542281FCC000EDD3EC /* ActorViewModel.swift */; };
 		44CCE4582282D25C00EDD3EC /* ActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE4562282D25C00EDD3EC /* ActorViewController.swift */; };
 		44CCE4592282D25C00EDD3EC /* ActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CCE4572282D25C00EDD3EC /* ActorViewController.xib */; };
+		44CCE45D2282E0DE00EDD3EC /* FavoretiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE45B2282E0DE00EDD3EC /* FavoretiesViewController.swift */; };
+		44CCE45E2282E0DE00EDD3EC /* FavoretiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CCE45C2282E0DE00EDD3EC /* FavoretiesViewController.xib */; };
+		44CCE4602282ED2400EDD3EC /* MasterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE45F2282ED2400EDD3EC /* MasterCollectionViewController.swift */; };
+		44CCE4632282ED4900EDD3EC /* ErrorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE4612282ED4800EDD3EC /* ErrorCollectionViewCell.swift */; };
+		44CCE4642282ED4900EDD3EC /* ErrorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CCE4622282ED4800EDD3EC /* ErrorCollectionViewCell.xib */; };
+		44CCE4682282EDC900EDD3EC /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCE4662282EDC900EDD3EC /* MovieCollectionViewCell.swift */; };
+		44CCE4692282EDC900EDD3EC /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44CCE4672282EDC900EDD3EC /* MovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +126,13 @@
 		44CCE4542281FCC000EDD3EC /* ActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewModel.swift; sourceTree = "<group>"; };
 		44CCE4562282D25C00EDD3EC /* ActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorViewController.swift; sourceTree = "<group>"; };
 		44CCE4572282D25C00EDD3EC /* ActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorViewController.xib; sourceTree = "<group>"; };
+		44CCE45B2282E0DE00EDD3EC /* FavoretiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoretiesViewController.swift; sourceTree = "<group>"; };
+		44CCE45C2282E0DE00EDD3EC /* FavoretiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoretiesViewController.xib; sourceTree = "<group>"; };
+		44CCE45F2282ED2400EDD3EC /* MasterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterCollectionViewController.swift; sourceTree = "<group>"; };
+		44CCE4612282ED4800EDD3EC /* ErrorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCollectionViewCell.swift; sourceTree = "<group>"; };
+		44CCE4622282ED4800EDD3EC /* ErrorCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ErrorCollectionViewCell.xib; sourceTree = "<group>"; };
+		44CCE4662282EDC900EDD3EC /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		44CCE4672282EDC900EDD3EC /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +237,7 @@
 		44CCE3C8227DFC5800EDD3EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44CCE45A2282E06700EDD3EC /* Fav */,
 				44CCE4262281C7E000EDD3EC /* CustomView */,
 				44CCE3E1227DFF4A00EDD3EC /* Master */,
 				44CCE3DA227DFD1000EDD3EC /* Main */,
@@ -297,6 +312,7 @@
 				44CCE41B2281C42800EDD3EC /* View */,
 				44CCE4152281C29600EDD3EC /* MasterTableViewController.swift */,
 				44CCE4162281C29600EDD3EC /* MasterViewController.swift */,
+				44CCE45F2282ED2400EDD3EC /* MasterCollectionViewController.swift */,
 			);
 			path = Master;
 			sourceTree = "<group>";
@@ -318,6 +334,8 @@
 		44CCE41B2281C42800EDD3EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				44CCE4612282ED4800EDD3EC /* ErrorCollectionViewCell.swift */,
+				44CCE4622282ED4800EDD3EC /* ErrorCollectionViewCell.xib */,
 				44CCE41D2281C43900EDD3EC /* ErrorTableViewCell.swift */,
 				44CCE41C2281C43900EDD3EC /* ErrorTableViewCell.xib */,
 			);
@@ -361,6 +379,7 @@
 		44CCE44C2281F98A00EDD3EC /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				44CCE4652282EDB500EDD3EC /* View */,
 				44CCE4472281F97200EDD3EC /* MoviesViewController.swift */,
 				44CCE4482281F97200EDD3EC /* MoviesViewController.xib */,
 			);
@@ -383,6 +402,24 @@
 				44CCE4122281C23500EDD3EC /* MainViewController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		44CCE45A2282E06700EDD3EC /* Fav */ = {
+			isa = PBXGroup;
+			children = (
+				44CCE45B2282E0DE00EDD3EC /* FavoretiesViewController.swift */,
+				44CCE45C2282E0DE00EDD3EC /* FavoretiesViewController.xib */,
+			);
+			path = Fav;
+			sourceTree = "<group>";
+		};
+		44CCE4652282EDB500EDD3EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44CCE4662282EDC900EDD3EC /* MovieCollectionViewCell.swift */,
+				44CCE4672282EDC900EDD3EC /* MovieCollectionViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,9 +527,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				44CCE4422281F8B900EDD3EC /* ActorCellViewController.xib in Resources */,
+				44CCE4642282ED4900EDD3EC /* ErrorCollectionViewCell.xib in Resources */,
 				44CCE41E2281C43900EDD3EC /* ErrorTableViewCell.xib in Resources */,
 				44CCE4592282D25C00EDD3EC /* ActorViewController.xib in Resources */,
 				44CCE3D8227DFCDC00EDD3EC /* ActorDetailViewController.xib in Resources */,
+				44CCE4692282EDC900EDD3EC /* MovieCollectionViewCell.xib in Resources */,
+				44CCE45E2282E0DE00EDD3EC /* FavoretiesViewController.xib in Resources */,
 				44CCE4252281C6E500EDD3EC /* ActorTableViewCell.xib in Resources */,
 				44CCE3A1227DFAB500EDD3EC /* LaunchScreen.storyboard in Resources */,
 				44CCE4142281C23500EDD3EC /* MainViewController.xib in Resources */,
@@ -539,8 +579,10 @@
 				44CCE3CE227DFC8000EDD3EC /* Actor.swift in Sources */,
 				44CCE3FC2280A34C00EDD3EC /* HttpManager.swift in Sources */,
 				44CCE4412281F8B900EDD3EC /* ActorCellViewController.swift in Sources */,
+				44CCE45D2282E0DE00EDD3EC /* FavoretiesViewController.swift in Sources */,
 				44CCE3D7227DFCDC00EDD3EC /* ActorDetailViewController.swift in Sources */,
 				44CCE41F2281C43900EDD3EC /* ErrorTableViewCell.swift in Sources */,
+				44CCE4632282ED4900EDD3EC /* ErrorCollectionViewCell.swift in Sources */,
 				44CCE42C2281CB4C00EDD3EC /* Movie.swift in Sources */,
 				44CCE4552281FCC000EDD3EC /* ActorViewModel.swift in Sources */,
 				44CCE4172281C29600EDD3EC /* MasterTableViewController.swift in Sources */,
@@ -548,10 +590,12 @@
 				44CCE41A2281C31F00EDD3EC /* UIUtility.swift in Sources */,
 				44CCE40E2281ABA900EDD3EC /* MovieResponse.swift in Sources */,
 				44CCE43E2281F17000EDD3EC /* MoviesViewModel.swift in Sources */,
+				44CCE4602282ED2400EDD3EC /* MasterCollectionViewController.swift in Sources */,
 				44CCE4212281C56D00EDD3EC /* FactoryViewModel.swift in Sources */,
 				44CCE4182281C29600EDD3EC /* MasterViewController.swift in Sources */,
 				44CCE4242281C6E500EDD3EC /* ActorTableViewCell.swift in Sources */,
 				44CCE40A22818E4E00EDD3EC /* MovieHttp.swift in Sources */,
+				44CCE4682282EDC900EDD3EC /* MovieCollectionViewCell.swift in Sources */,
 				44CCE4532281FAAE00EDD3EC /* ActorDetailViewModel.swift in Sources */,
 				44CCE397227DFAB300EDD3EC /* AppDelegate.swift in Sources */,
 			);

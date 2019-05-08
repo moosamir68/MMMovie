@@ -29,6 +29,10 @@ class MainViewController: MasterTableViewController {
     override func initForceUI() {
         super.initForceUI()
         self.tableView.register(UINib(nibName: identifireActorTableViewCell, bundle: nil), forCellReuseIdentifier: identifireActorTableViewCell)
+        self.navigationTitleString = "MMMovie"
+        
+        let favButton = UIBarButtonItem(image: #imageLiteral(resourceName: "star"), style: .plain, target: self, action: #selector(MainViewController.userDidTapOnFavButton))
+        self.navigationItem.rightBarButtonItem = favButton
     }
     
     //get data
@@ -78,6 +82,11 @@ class MainViewController: MasterTableViewController {
         
         return self.tableView.frame.height
     }
+    
+    @objc private func userDidTapOnFavButton(){
+        let favController = FavoretiesViewController()
+        self.navigationController?.pushViewController(favController, animated: true)
+    }
 }
 
 //extentions
@@ -108,7 +117,7 @@ extension MainViewController:ActorCellDelegate{
     }
     
     func getActorCellController(viewModel: ActorCellViewModel) -> ActorCellViewController {
-        let itemSize = CGSize(width: self.tableView.frame.width, height: self.heightForRow)
+        let itemSize = CGSize(width: self.tableView.frame.width, height: self.getHeightForRow())
         let actorCellController = ActorCellViewController(viewModel: viewModel, size: itemSize)
         self.addChild(actorCellController)
         actorCellController.didMove(toParent: self)

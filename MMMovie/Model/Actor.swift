@@ -47,6 +47,12 @@ struct Actor: Codable {
         }
         
         do{
+            movies = try container.decode([Movie].self, forKey: .movies)
+        }catch{
+            
+        }
+        
+        do{
             name = try container.decode(String.self, forKey: .name)
         }catch{
             
