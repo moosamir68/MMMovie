@@ -5,7 +5,10 @@
 //  Created by iOS Developer on 5/7/19.
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
-
+protocol ViewModelDelegate:class {
+    func sucessGetData()
+    func faildGetData()
+}
 
 struct FactoryViewModel{
     static func ActorsViewModel(actors:[Actor], delegate:ActorsViewModelDelegate) ->ActorsViewModel{
@@ -22,5 +25,13 @@ struct FactoryViewModel{
     
     static func MoviesViewModel(movies:[Movie], pageIndex:Int) ->MoviesViewModel{
         return MoviesViewModelImp(movies: movies, pageIndex: pageIndex)
+    }
+    
+    static func MovieDetailViewModel(movie:Movie, delegate:ViewModelDelegate) ->MovieDetailViewModel{
+        return MovieDetailViewModelImp(movie: movie, delegate: delegate)
+    }
+    
+    static func ActorDetailViewModel(actor:Actor, delegate:ViewModelDelegate) ->ActorDetailViewModel{
+        return ActorDetailViewModelImp(actor: actor, delegate: delegate)
     }
 }

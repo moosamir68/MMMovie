@@ -1,10 +1,11 @@
 //
-//  MMRequest.swift
-//  DonerKabab
+//  MovieRequest.swift
+//  MMMovie
 //
-//  Created by Moosa Mir on 7/4/17.
-//  Copyright © 2017 EnoOne. All rights reserved.
+//  Created by iOS Developer on 5/4/19.
+//  Copyright © 2019 MMMovie. All rights reserved.
 //
+
 
 import Foundation
 

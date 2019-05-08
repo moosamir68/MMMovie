@@ -1,47 +1,47 @@
 //
-//  ActorDetailViewModel.swift
+//  MovieDetailViewModel.swift
 //  MMMovie
 //
-//  Created by iOS Developer on 5/7/19.
+//  Created by iOS Developer on 5/8/19.
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
 
 import Foundation
 
-protocol ActorDetailViewModel {
-    var actor:Actor{get set}
+protocol MovieDetailViewModel {
+    var movie:Movie{get set}
     var errorDescription:String?{get set}
     
-    func getActorDetail()
+    func getMovieDetail()
     func getImagePath() ->String
 }
 
-class ActorDetailViewModelImp: ActorDetailViewModel {
+class MovieDetailViewModelImp: MovieDetailViewModel {
     
     //MARK:- public properties
-    var actor: Actor
+    var movie: Movie
     var errorDescription: String? = "Fetching data"
     
     //MARK:- private properties
     private weak var delegate:ViewModelDelegate? = nil
     
     //MARK:- init
-    init(actor:Actor, delegate:ViewModelDelegate) {
-        self.actor = actor
+    init(movie:Movie, delegate:ViewModelDelegate) {
+        self.movie = movie
         self.delegate = delegate
     }
     
     //MARK:- public methods
-    func getActorDetail() {
+    func getMovieDetail() {
         
     }
     
     func getImagePath() -> String {
-        return UrlManager.getMovieImagePath(image: self.actor.profilePath!)
+        return UrlManager.getMovieImagePath(image: self.movie.backdropPath!)
     }
 }
 
-extension ActorDetailViewModelImp:MovieRequestDelegate{
+extension MovieDetailViewModelImp:MovieRequestDelegate{
     func sucessGetData(item: Codable, request: MovieRequest) {
         self.delegate?.sucessGetData()
     }

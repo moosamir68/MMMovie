@@ -32,7 +32,8 @@ class ErrorTableViewCell: UITableViewCell {
         self.backgroundColor = .clear
         self.selectionStyle = .none
         self.contentView.backgroundColor = .clear
-        self.boxView.backgroundColor = UIColor.lightGray
+        self.boxView.backgroundColor = .clear
+        
         self.titleLabel.textColor = UIColor.darkGray
         
         self.boxView.layer.cornerRadius = 4.0

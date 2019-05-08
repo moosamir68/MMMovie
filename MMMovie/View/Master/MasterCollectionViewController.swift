@@ -1,9 +1,9 @@
 //
 //  MasterCollectionViewController.swift
-//  Mealsy
+//  MMMovie
 //
-//  Created by iOS Developer on 1/13/19.
-//  Copyright © 2019 Mealsy. All rights reserved.
+//  Created by iOS Developer on 5/8/19.
+//  Copyright © 2019 MMMovie. All rights reserved.
 //
 
 import UIKit
@@ -51,6 +51,7 @@ class MasterCollectionViewController: MasterViewController, UICollectionViewDele
         if(self.canProgramicalyAddTableView){
             self.collectionView = UICollectionView()
             self.boxView.addSubview(self.collectionView)
+            self.boxView.addConstaintsToSuperview()
         }
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

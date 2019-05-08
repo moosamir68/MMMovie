@@ -1,8 +1,15 @@
+//
+//  HttpManager.swift
+//  MMMovie
+//
+//  Created by iOS Developer on 5/4/19.
+//  Copyright © 2019 MMMovie. All rights reserved.
+//
+
 
 import Foundation
 
 struct HttpManager {
-//    static let sharedInstanse:HttpManager = HttpManager()
     
     //MARK:- private properties
     private static var requests:[MovieRequest] = []

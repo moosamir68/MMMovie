@@ -35,6 +35,12 @@ class MainViewController: MasterTableViewController {
         self.navigationItem.rightBarButtonItem = favButton
     }
     
+    override func initUI() {
+        super.initUI()
+        self.tableView.tableFooterView = nil
+        self.tableView.separatorStyle = .none
+    }
+    
     //get data
     override func getData() {
         self.viewModel.getActors()
@@ -128,12 +134,12 @@ extension MainViewController:ActorCellDelegate{
 
 extension MainViewController:ActorCellControllerDelegate{
     func showMovieDetail(movie: Movie) {
-        let movieDetailController = MovieDetailViewController()
+        let movieDetailController = MovieDetailViewController(movie: movie)
         self.navigationController?.pushViewController(movieDetailController, animated: true)
     }
     
     func showActorDetail(actor: Actor) {
-        let actorDetailController = ActorDetailViewController()
+        let actorDetailController = ActorDetailViewController(actor: actor)
         self.navigationController?.pushViewController(actorDetailController, animated: true)
     }
     
