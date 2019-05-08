@@ -1,5 +1,5 @@
 //
-//  ActorViewModel.swift
+//  ActorDetailViewModel.swift
 //  MMMovie
 //
 //  Created by iOS Developer on 5/7/19.
@@ -8,25 +8,17 @@
 
 import Foundation
 
-protocol ActorViewModel{
+protocol ActorDetailViewModel {
     var actor:Actor{get set}
-    
-    func bindActor(actor:Actor)
 }
 
-
-class ActorViewModelImp: ActorViewModel {
+class ActorDetailViewModelImp:ActorDetailViewModel{
     
     //MARK:- public properties
     var actor: Actor
     
-    //MARK;- init
+    //MARK:- init
     init(actor:Actor) {
-        self.actor = actor
-    }
-    
-    //MARK:- public functions
-    func bindActor(actor: Actor) {
         self.actor = actor
     }
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActorViewController" customModule="MMMovie" customModuleProvider="target">
+            <connections>
+                <outlet property="actorImageView" destination="8Oy-rf-Nuq" id="Qck-7C-e79"/>
+                <outlet property="actorNameLabel" destination="rgl-g2-Sdz" id="3My-au-FVN"/>
+                <outlet property="actorPopularityLabel" destination="tgd-nV-Tzm" id="8gU-gG-Uh3"/>
+                <outlet property="boxView" destination="cj0-AT-pno" id="Qgc-CH-hXa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-AT-pno">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Oy-rf-Nuq">
+                            <rect key="frame" x="8" y="306.5" width="54" height="54"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="54" id="dfq-7D-nd9"/>
+                                <constraint firstAttribute="height" constant="54" id="ix2-sM-UnL"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgl-g2-Sdz">
+                            <rect key="frame" x="70" y="306.5" width="297" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgd-nV-Tzm">
+                            <rect key="frame" x="70" y="339.5" width="297" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="rgl-g2-Sdz" firstAttribute="top" secondItem="8Oy-rf-Nuq" secondAttribute="top" id="C84-Zm-1dn"/>
+                        <constraint firstItem="8Oy-rf-Nuq" firstAttribute="leading" secondItem="cj0-AT-pno" secondAttribute="leading" constant="8" id="DdL-Ex-GKy"/>
+                        <constraint firstAttribute="trailing" secondItem="tgd-nV-Tzm" secondAttribute="trailing" constant="8" id="FXN-Tg-8EN"/>
+                        <constraint firstItem="8Oy-rf-Nuq" firstAttribute="centerY" secondItem="cj0-AT-pno" secondAttribute="centerY" id="Qfg-oD-8UG"/>
+                        <constraint firstItem="tgd-nV-Tzm" firstAttribute="leading" secondItem="8Oy-rf-Nuq" secondAttribute="trailing" constant="8" id="gsr-Lp-VE8"/>
+                        <constraint firstAttribute="trailing" secondItem="rgl-g2-Sdz" secondAttribute="trailing" constant="8" id="ld4-w5-H2I"/>
+                        <constraint firstItem="rgl-g2-Sdz" firstAttribute="leading" secondItem="8Oy-rf-Nuq" secondAttribute="trailing" constant="8" id="oFS-kJ-HN8"/>
+                        <constraint firstItem="tgd-nV-Tzm" firstAttribute="bottom" secondItem="8Oy-rf-Nuq" secondAttribute="bottom" id="uqt-am-dqn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cj0-AT-pno" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Q0w-ST-3Dh"/>
+                <constraint firstItem="cj0-AT-pno" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QfA-tQ-PZn"/>
+                <constraint firstItem="cj0-AT-pno" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cA9-QX-exp"/>
+                <constraint firstItem="cj0-AT-pno" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="taw-Iv-bK7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

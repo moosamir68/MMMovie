@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let tabBarController = MainTabBarViewController()
-        window?.rootViewController = tabBarController
+        let mainController = MainViewController(actors: [])
+        window?.rootViewController = mainController
         window?.makeKeyAndVisible()
 
         self.setupSDKs()

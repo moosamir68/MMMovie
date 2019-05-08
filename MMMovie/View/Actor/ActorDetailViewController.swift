@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActorViewController: UIViewController {
+class ActorDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
