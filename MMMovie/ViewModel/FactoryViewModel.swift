@@ -34,4 +34,8 @@ struct FactoryViewModel{
     static func ActorDetailViewModel(actor:Actor, delegate:ViewModelDelegate) ->ActorDetailViewModel{
         return ActorDetailViewModelImp(actor: actor, delegate: delegate)
     }
+    
+    static func favortiesViewModel(delegate:FavoretiesViewModelDelegate) ->FavoretiesViewModel{
+        return FavoretiesViewModelImp(delegate: delegate)
+    }
 }

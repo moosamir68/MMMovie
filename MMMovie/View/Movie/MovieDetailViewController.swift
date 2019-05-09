@@ -6,6 +6,10 @@
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
 
+protocol MovieDetailControllerDelegate:class {
+    func userChangeStatusExistMovieOnChache(movieId:Int)
+}
+
 import UIKit
 
 class MovieDetailViewController: MasterViewController {
@@ -65,11 +69,13 @@ class MovieDetailViewController: MasterViewController {
     
     //MARK:- private properties
     private var viewModel:MovieDetailViewModel!
+    private weak var delegate:MovieDetailControllerDelegate?
     
     //MARK:- init
-    init(movie:Movie) {
+    init(movie:Movie, delegate:MovieDetailControllerDelegate) {
         super.init(nibName: "MovieDetailViewController", bundle: nil)
         self.viewModel = FactoryViewModel.MovieDetailViewModel(movie: movie, delegate: self)
+        self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -232,6 +238,8 @@ extension MovieDetailViewController:MovieDetailViewModelDelegate{
     func updateContentOfFavButton() {
         DispatchQueue.main.async {
             self.setFavImage()
+            //call delegate after change status of exist on cache
+            self.delegate?.userChangeStatusExistMovieOnChache(movieId: self.viewModel.getMovieId())
         }
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="188" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="MMMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="188"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="187.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FaJ-R0-EuI">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="187.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoP-l3-NpF">
+                                <rect key="frame" x="8" y="0.0" width="404" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="pfH-ij-6zD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RTv-Fo-vJB">
+                                <rect key="frame" x="0.0" y="28" width="420" height="159.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DoP-l3-NpF" firstAttribute="top" secondItem="FaJ-R0-EuI" secondAttribute="top" id="0cH-N3-r5P"/>
+                            <constraint firstAttribute="bottom" secondItem="RTv-Fo-vJB" secondAttribute="bottom" id="2oR-tN-j8a"/>
+                            <constraint firstItem="RTv-Fo-vJB" firstAttribute="leading" secondItem="FaJ-R0-EuI" secondAttribute="leading" id="8kB-iN-Gjo"/>
+                            <constraint firstAttribute="trailing" secondItem="RTv-Fo-vJB" secondAttribute="trailing" id="bQc-tR-l5T"/>
+                            <constraint firstAttribute="trailing" secondItem="DoP-l3-NpF" secondAttribute="trailing" constant="8" id="eO6-bW-Xhg"/>
+                            <constraint firstItem="RTv-Fo-vJB" firstAttribute="top" secondItem="DoP-l3-NpF" secondAttribute="bottom" id="sA5-gy-MvY"/>
+                            <constraint firstItem="DoP-l3-NpF" firstAttribute="leading" secondItem="FaJ-R0-EuI" secondAttribute="leading" constant="8" id="u9G-na-Zh4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FaJ-R0-EuI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0Uv-Hv-6rq"/>
+                    <constraint firstAttribute="trailing" secondItem="FaJ-R0-EuI" secondAttribute="trailing" id="TOL-2q-ipA"/>
+                    <constraint firstAttribute="bottom" secondItem="FaJ-R0-EuI" secondAttribute="bottom" id="gcZ-Y3-9yg"/>
+                    <constraint firstItem="FaJ-R0-EuI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vL9-hy-rPP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="boxView" destination="FaJ-R0-EuI" id="4QT-SL-Dl9"/>
+                <outlet property="movieImageView" destination="RTv-Fo-vJB" id="toC-oR-8av"/>
+                <outlet property="movieNameLabel" destination="DoP-l3-NpF" id="7Nj-vN-uTX"/>
+            </connections>
+            <point key="canvasLocation" x="57.600000000000001" y="218.59070464767618"/>
+        </tableViewCell>
+    </objects>
+</document>

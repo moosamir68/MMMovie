@@ -7,6 +7,7 @@
 //
 
 class MovieCacheManager {
+    
     static let shared = MovieCacheManager()
     
     var movies:[Movie]
@@ -27,8 +28,14 @@ class MovieCacheManager {
         DataManager.shared.saveFaveritesMovie(movies: self.movies)
     }
     
+    //this method check for a movie is exist on cache or not exist
     func checkExistMovieOnCache(movie:Movie) ->Bool{
         let isExist = self.movies.contains(where: {$0.id == movie.id})
         return isExist
+    }
+    
+    //get array of movie
+    func getMovies() ->[Movie]{
+        return self.movies
     }
 }

@@ -31,6 +31,8 @@ protocol MovieDetailViewModel {
     func getGenres() ->String?
     func getBelongCollections() ->String?
     
+    func getMovieId() ->Int
+    
     func userDidTapOnFavButton()
     func checkIsExistMovieOnCache() ->Bool
 }
@@ -132,6 +134,10 @@ class MovieDetailViewModelImp: MovieDetailViewModel {
         }
         
         return self.movieDetail?.belongsToCollection?.name
+    }
+    
+    func getMovieId() -> Int {
+        return self.movie.id
     }
     
     //fav methods

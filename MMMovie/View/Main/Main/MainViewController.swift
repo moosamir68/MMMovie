@@ -134,7 +134,7 @@ extension MainViewController:ActorCellDelegate{
 
 extension MainViewController:ActorCellControllerDelegate{
     func showMovieDetail(movie: Movie) {
-        let movieDetailController = MovieDetailViewController(movie: movie)
+        let movieDetailController = MovieDetailViewController(movie: movie, delegate: self)
         self.navigationController?.pushViewController(movieDetailController, animated: true)
     }
     
@@ -143,4 +143,10 @@ extension MainViewController:ActorCellControllerDelegate{
         self.navigationController?.pushViewController(actorDetailController, animated: true)
     }
     
+}
+
+extension MainViewController:MovieDetailControllerDelegate{
+    func userChangeStatusExistMovieOnChache(movieId: Int) {
+        
+    }
 }
