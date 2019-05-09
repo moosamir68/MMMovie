@@ -33,7 +33,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func fillData(movie:Movie){
         self.movie = movie
         
-        let imagePathString = UrlManager.getMovieImagePath(image: movie.backdropPath!)
+        let imagePathString = UrlManager.getMovieImagePath(image: movie.getBackdropPath())
         ImageCacheLoader.sharedInstanse.obtainImageWithPath(imagePath: imagePathString, placeHolder: #imageLiteral(resourceName: "MoviePlaceHolder")) {[weak self] (image, imagePath) in
             guard imagePath == self?.getImagePath() else{
                 self?.movieImageView.image = #imageLiteral(resourceName: "MoviePlaceHolder")
@@ -45,6 +45,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     private func getImagePath() ->String{
-        return UrlManager.getMovieImagePath(image: self.movie.backdropPath!)
+        return UrlManager.getMovieImagePath(image: self.movie.getBackdropPath())
     }
 }

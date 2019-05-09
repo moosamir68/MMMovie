@@ -11,8 +11,8 @@ protocol ViewModelDelegate:class {
 }
 
 struct FactoryViewModel{
-    static func ActorsViewModel(actors:[Actor], delegate:ActorsViewModelDelegate) ->ActorsViewModel{
-        return ActorsViewModelImp(actors: actors, delegate: delegate)
+    static func MainViewModel(actors:[Actor], delegate:MainViewModelDelegate) ->MainViewModel{
+        return MainViewModelImp(actors: actors, delegate: delegate)
     }
     
     static func ActorCellViewModel(actor:Actor) ->ActorCellViewModel{

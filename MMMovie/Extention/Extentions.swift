@@ -19,7 +19,7 @@ extension Array where Element: Equatable {
 
 extension UIView {
     
-    public func addConstaintsToSuperview(topMargin:CGFloat = 0, bottomMargin:CGFloat = 0, tralingMargin:CGFloat = 0, leadingMargin:CGFloat = 0) {
+    func addConstaintsToSuperview(topMargin:CGFloat = 0, bottomMargin:CGFloat = 0, tralingMargin:CGFloat = 0, leadingMargin:CGFloat = 0) {
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -54,5 +54,42 @@ extension UIView {
                            attribute: .bottom,
                            multiplier: 1,
                            constant: bottomMargin).isActive = true
+    }
+    
+    func addConstaintsToSuperviewFromTop(height:CGFloat = 54.0) {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: self,
+                           attribute: .leading,
+                           relatedBy: .equal,
+                           toItem: self.superview,
+                           attribute: .leading,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        
+        NSLayoutConstraint(item: self,
+                           attribute: .trailing,
+                           relatedBy: .equal,
+                           toItem: self.superview,
+                           attribute: .trailing,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        
+        NSLayoutConstraint(item: self,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self.superview,
+                           attribute: .top,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        
+        NSLayoutConstraint(item: self,
+                           attribute: .height,
+                           relatedBy: .equal,
+                           toItem: nil,
+                           attribute: .notAnAttribute,
+                           multiplier: 1,
+                           constant: height).isActive = true
     }
 }

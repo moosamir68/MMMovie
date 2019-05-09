@@ -8,34 +8,37 @@
 
 import Foundation
 
-protocol ActorsViewModelDelegate:class {
+protocol MainViewModelDelegate:class {
     func sucessGetActors()
     func faildGetActors()
+    func reloadData()
 }
 
-protocol ActorsViewModel {
+protocol MainViewModel {
     var actors:[Actor]{get set}
     var errorDescription:String?{get set}
     
     func getActors()
     func getActorCellViewModel(row:Int) ->ActorCellViewModel
+    func userDidTaponSearchButton(text:String?)
+    func userDidTapOnCancelButton(text:String?)
 }
 
-class ActorsViewModelImp: ActorsViewModel {
+class MainViewModelImp: MainViewModel {
     
     //MARK:- public properties
-    internal var actors: [Actor]
-    internal var errorDescription:String? = "Fetching data"
+    var actors: [Actor]
+    var errorDescription:String? = "Fetching actors"
     
     //MARK:- private methods
-    private var delegate:ActorsViewModelDelegate? = nil
+    private var delegate:MainViewModelDelegate? = nil
     lazy private var filter:MovieSearchObject = {return MovieSearchObject()}()
     private var isGettingData:Bool = false
     private var isCompletedGetData:Bool = false
     private var actorCellViewModels:[ActorCellViewModel] = []
     
     //MARK:- init
-    init(actors:[Actor], delegate:ActorsViewModelDelegate){
+    init(actors:[Actor], delegate:MainViewModelDelegate){
         self.actors = actors
         self.delegate = delegate
         self.actorCellViewModels = self.getActorsViewModelForSpecialActors(actors: actors)
@@ -55,14 +58,60 @@ class ActorsViewModelImp: ActorsViewModel {
         
         self.isGettingData = true
         self.filter.page = self.getNextPageNumber()
-        HttpManager.getPopularActor(filter: self.filter, delegate: self)
+        if(self.filter.searchKey != nil){
+            HttpManager.searchActor(filter: self.filter, delegate: self)
+        }else{
+            HttpManager.getPopularActor(filter: self.filter, delegate: self)
+        }
     }
     
     func getActorCellViewModel(row: Int) -> ActorCellViewModel {
         return self.actorCellViewModels[row]
     }
     
+    func userDidTaponSearchButton(text: String?) {
+        guard let _ = text else{
+            return;
+        }
+        
+        self.setSearchObjectValueAndResetData(text: text!)
+        self.delegate?.reloadData()
+        self.searchActors()
+    }
+    
+    func userDidTapOnCancelButton(text: String?) {
+        guard let _ = text, text != "" else{
+            self.filter.searchKey = nil
+            self.resetContent()
+            self.errorDescription = "Fetching actors"
+            self.delegate?.reloadData()
+            self.getActors()
+            return;
+        }
+        
+        return;
+    }
+    
     //MARK:- private methods
+    //set search object values and reset data
+    private func setSearchObjectValueAndResetData(text:String){
+        self.resetContent()
+        self.errorDescription = "Searching..."
+        self.filter.searchKey = text
+    }
+    
+    private func resetContent(){
+        self.actors = []
+        self.actorCellViewModels = []
+        self.isGettingData = false
+        self.isCompletedGetData = false
+        self.filter.page = 1
+    }
+    //search actors
+    private func searchActors(){
+        HttpManager.searchActor(filter: self.filter, delegate: self)
+    }
+    
     //get next page number for request
     private func getNextPageNumber() ->Int{
         let page = (self.actors.count / self.filter.pageSize) + 1
@@ -91,7 +140,7 @@ class ActorsViewModelImp: ActorsViewModel {
     }
 }
 
-extension ActorsViewModelImp:MovieRequestDelegate{
+extension MainViewModelImp:MovieRequestDelegate{
     func faildGetData(error: MovieError, request: MovieRequest) {
         print("faield get movies")
         self.isGettingData = false

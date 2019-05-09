@@ -39,15 +39,15 @@ class MoviesViewController: MasterCollectionViewController {
     //MARK:- public methods
     func updateContent(movies:[Movie], pageIndex:Int){
         self.viewModel.bindMovies(movies: movies, pageIndex: pageIndex)
-        self.updateUiContentofPageControll()
         self.collectionView.reloadData()
+        self.updateUiContentofPageControll(pageIndex: pageIndex)
     }
     
     //MARK:- init ui
     override func initForceUI() {
         super.initForceUI()
         self.collectionView.register(UINib(nibName: identifireMovieCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: identifireMovieCollectionViewCell)
-        self.updateUiContentofPageControll()
+        self.updateUiContentofPageControll(pageIndex: self.viewModel.getPageIndex())
     }
     
     override func initUI() {
@@ -86,10 +86,12 @@ class MoviesViewController: MasterCollectionViewController {
     }
     
     //MARK:- private methods
-    private func updateUiContentofPageControll(){
-        self.pageControll.numberOfPages = self.viewModel.getCountOfPages()
-        self.scrollToSpecialPage(pageIndex: self.viewModel.getPageIndex())
-        self.updatePageControll()
+    private func updateUiContentofPageControll(pageIndex:Int){
+        if(self.viewModel.canGoToSpecialPage(index: pageIndex)){
+            self.pageControll.numberOfPages = self.viewModel.getCountOfPages()
+            self.scrollToSpecialPage(pageIndex: self.viewModel.getPageIndex())
+            self.updatePageControll()
+        }
     }
     
     private func updatePageControll(){

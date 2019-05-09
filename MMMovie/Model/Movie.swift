@@ -20,7 +20,7 @@ struct Movie: Codable {
     var originalLanguage:String? = ""
     var originalTitle:String? = ""
     var genreIds:[Int]? = []
-    var backdropPath:String? = ""
+    private var backdropPath:String? = ""
     var adult:Bool? = false
     var overview:String? = ""
     var releaseDate:String? = ""
@@ -41,5 +41,12 @@ struct Movie: Codable {
         case adult = "adult"
         case overview = "overview"
         case releaseDate = "release_date"
+    }
+    
+    func getBackdropPath() ->String{
+        guard let _ = self.backdropPath else {
+            return ""
+        }
+        return self.backdropPath!
     }
 }

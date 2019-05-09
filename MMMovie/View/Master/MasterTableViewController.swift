@@ -94,6 +94,10 @@ class MasterTableViewController: MasterViewController, UITableViewDelegate, UITa
         }
     }
     
+    func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
+    
     //MARK:- refreshData
     func refresh(){
         self.getData()

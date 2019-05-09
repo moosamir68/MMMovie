@@ -10,4 +10,5 @@ class MovieSearchObject{
     var page:Int = 1
     var offset:Int = 0
     var pageSize:Int = 20
+    var searchKey:String? = nil
 }

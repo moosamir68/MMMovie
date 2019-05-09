@@ -10,15 +10,19 @@ import UIKit
 
 class MainViewController: MasterTableViewController {
 
+    //MARK:- ui properties
+    private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 56.0))
+    
+    //MARK:- items
     override var items: [Codable]{get {return self.viewModel.actors} set{}}
     
     //MARK:- private properties
-    private var viewModel:ActorsViewModel!
+    private var viewModel:MainViewModel!
     
     //MARK:- init
     init(actors:[Actor]) {
         super.init(nibName: "MainViewController", bundle: nil)
-        self.viewModel = FactoryViewModel.ActorsViewModel(actors: actors, delegate: self)
+        self.viewModel = FactoryViewModel.MainViewModel(actors: actors, delegate: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,6 +32,15 @@ class MainViewController: MasterTableViewController {
     //MARK:- force ui
     override func initForceUI() {
         super.initForceUI()
+        
+        self.searchBar.delegate = self
+        self.searchBar.searchBarStyle = .minimal
+        self.searchBar.backgroundColor = UIUtility.navigationBarColor()
+        self.searchBar.showsCancelButton = true
+        self.tableView.tableHeaderView = self.searchBar
+        self.searchBar.change(textFont: UIUtility.normalFontWithPlusSize(), color:.white)
+        
+        
         self.tableView.register(UINib(nibName: identifireActorTableViewCell, bundle: nil), forCellReuseIdentifier: identifireActorTableViewCell)
         self.navigationTitleString = "MMMovie"
         
@@ -39,6 +52,8 @@ class MainViewController: MasterTableViewController {
         super.initUI()
         self.tableView.tableFooterView = nil
         self.tableView.separatorStyle = .none
+        self.searchBar.delegate = self
+        self.tableView.backgroundColor = UIUtility.navigationBarColor()
     }
     
     //get data
@@ -97,7 +112,7 @@ class MainViewController: MasterTableViewController {
 }
 
 //extentions
-extension MainViewController:ActorsViewModelDelegate{
+extension MainViewController:MainViewModelDelegate{
     func sucessGetActors() {
         DispatchQueue.main.async {
             self.hideLazyLoading()
@@ -111,9 +126,16 @@ extension MainViewController:ActorsViewModelDelegate{
             self.tableView.reloadData()
         }
     }
+    
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.hideLazyLoading()
+            self.tableView.reloadData()
+        }
+    }
 }
 
-//mehotds of actor cell
+//mehotds of actor cell view
 extension MainViewController:ActorCellDelegate{
     func userDidTapOnActor(actor: Actor) {
         print("user select an actor with name:", actor.name!)
@@ -132,6 +154,7 @@ extension MainViewController:ActorCellDelegate{
     }
 }
 
+//MARK:- actor cell controller delegate
 extension MainViewController:ActorCellControllerDelegate{
     func showMovieDetail(movie: Movie) {
         let movieDetailController = MovieDetailViewController(movie: movie, delegate: self)
@@ -145,8 +168,22 @@ extension MainViewController:ActorCellControllerDelegate{
     
 }
 
+//MARK:- movie detail controller delegate
 extension MainViewController:MovieDetailControllerDelegate{
     func userChangeStatusExistMovieOnChache(movieId: Int) {
         
+    }
+}
+
+//MARK:- methods of searchbar
+extension MainViewController:UISearchBarDelegate{
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismissKeyboard()
+        self.viewModel.userDidTapOnCancelButton(text: searchBar.text)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.dismissKeyboard()
+        self.viewModel.userDidTaponSearchButton(text: searchBar.text)
     }
 }

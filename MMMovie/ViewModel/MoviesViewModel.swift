@@ -15,6 +15,8 @@ protocol MoviesViewModel {
     func bindPageIndex(pageIndex:Int)
     func getPageIndex() ->Int
     func getCountOfPages() ->Int
+    
+    func canGoToSpecialPage(index:Int) ->Bool
 }
 
 class MoviesViewModelImp:MoviesViewModel {
@@ -47,5 +49,12 @@ class MoviesViewModelImp:MoviesViewModel {
     
     func getCountOfPages() -> Int {
         return self.movies.count
+    }
+    
+    func canGoToSpecialPage(index:Int) -> Bool {
+        guard self.movies.count > index else{
+            return false
+        }
+        return true
     }
 }

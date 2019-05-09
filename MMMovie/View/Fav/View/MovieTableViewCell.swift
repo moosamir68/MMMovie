@@ -55,6 +55,6 @@ class MovieTableViewCell: UITableViewCell {
     }
     
     private func getImagePath() ->String{
-        return UrlManager.getMovieImagePath(image: self.movie.backdropPath!)
+        return UrlManager.getMovieImagePath(image: self.movie.getBackdropPath())
     }
 }

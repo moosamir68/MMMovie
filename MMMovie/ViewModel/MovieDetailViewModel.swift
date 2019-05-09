@@ -56,7 +56,7 @@ class MovieDetailViewModelImp: MovieDetailViewModel {
     
     //MARK:- public methods
     func getImagePath() -> String {
-        return UrlManager.getMovieImagePath(image: self.movie.backdropPath!)
+        return UrlManager.getMovieImagePath(image: self.movie.getBackdropPath())
     }
     
     func getName() -> String? {

@@ -51,11 +51,6 @@ class MasterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    //MARK:- reload data
-    func reloadData(){
-        
-    }
     
     //MARK:- init
     //this mwthod force for init
@@ -95,6 +90,8 @@ class MasterViewController: UIViewController {
         }else{
             
         }
+        
+        self.view.backgroundColor = UIUtility.navigationBarColor()
     }
     
     //set navigaiotn title
