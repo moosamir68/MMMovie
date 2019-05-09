@@ -6,6 +6,12 @@
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
 
+protocol MovieDetailViewModelDelegate:class {
+    func updateContentOfFavButton()
+    func sucessGetMovieDetail()
+    func faildGetMovieDetail()
+}
+
 import Foundation
 
 protocol MovieDetailViewModel {
@@ -24,6 +30,9 @@ protocol MovieDetailViewModel {
     func getProductionCompanies() ->String?
     func getGenres() ->String?
     func getBelongCollections() ->String?
+    
+    func userDidTapOnFavButton()
+    func checkIsExistMovieOnCache() ->Bool
 }
 
 class MovieDetailViewModelImp: MovieDetailViewModel {
@@ -33,12 +42,12 @@ class MovieDetailViewModelImp: MovieDetailViewModel {
     var errorDescription: String? = "Fetching data"
     
     //MARK:- private properties
-    private weak var delegate:ViewModelDelegate? = nil
+    private weak var delegate:MovieDetailViewModelDelegate? = nil
     private var movie: Movie
     private var movieDetail:MovieDetail? = nil
     
     //MARK:- init
-    init(movie:Movie, delegate:ViewModelDelegate) {
+    init(movie:Movie, delegate:MovieDetailViewModelDelegate) {
         self.movie = movie
         self.delegate = delegate
     }
@@ -125,6 +134,16 @@ class MovieDetailViewModelImp: MovieDetailViewModel {
         return self.movieDetail?.belongsToCollection?.name
     }
     
+    //fav methods
+    func checkIsExistMovieOnCache() -> Bool {
+        return MovieCacheManager.shared.checkExistMovieOnCache(movie: self.movie)
+    }
+    
+    func userDidTapOnFavButton() {
+        MovieCacheManager.shared.addOrRemoveMovie(movie: self.movie)
+        self.delegate?.updateContentOfFavButton()
+    }
+    
     //MARK:- network methods
     func getMovieDetail() {
         HttpManager.getMovieDetail(id: self.movie.id, delegate: self)
@@ -134,10 +153,10 @@ class MovieDetailViewModelImp: MovieDetailViewModel {
 extension MovieDetailViewModelImp:MovieRequestDelegate{
     func sucessGetData(item: Codable, request: MovieRequest) {
         self.movieDetail = item as? MovieDetail
-        self.delegate?.sucessGetData()
+        self.delegate?.sucessGetMovieDetail()
     }
     
     func faildGetData(error: MovieError, request: MovieRequest) {
-        self.delegate?.faildGetData()
+        self.delegate?.faildGetMovieDetail()
     }
 }

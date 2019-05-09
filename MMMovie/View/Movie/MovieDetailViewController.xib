@@ -50,11 +50,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="949"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emv-Y8-eat">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="949"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEM-TK-PM9">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
@@ -78,6 +78,9 @@
                                         <constraint firstAttribute="width" constant="32" id="dPx-wQ-467"/>
                                     </constraints>
                                     <state key="normal" image="star"/>
+                                    <connections>
+                                        <action selector="userDidTapOnFavButton:" destination="-1" eventType="touchUpInside" id="D8u-91-eLz"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -91,7 +94,7 @@
                             </constraints>
                         </view>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGI-az-X8F">
-                            <rect key="frame" x="12" y="251" width="351" height="698"/>
+                            <rect key="frame" x="12" y="251" width="351" height="416"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1oE-vK-1Cg">
                                     <rect key="frame" x="0.0" y="0.0" width="351" height="550.5"/>
@@ -288,7 +291,7 @@
                             </constraints>
                         </scrollView>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="juW-Rv-sPL">
-                            <rect key="frame" x="177.5" y="464.5" width="20" height="20"/>
+                            <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

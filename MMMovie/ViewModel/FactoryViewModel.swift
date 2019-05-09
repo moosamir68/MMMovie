@@ -27,7 +27,7 @@ struct FactoryViewModel{
         return MoviesViewModelImp(movies: movies, pageIndex: pageIndex)
     }
     
-    static func MovieDetailViewModel(movie:Movie, delegate:ViewModelDelegate) ->MovieDetailViewModel{
+    static func MovieDetailViewModel(movie:Movie, delegate:MovieDetailViewModelDelegate) ->MovieDetailViewModel{
         return MovieDetailViewModelImp(movie: movie, delegate: delegate)
     }
     

@@ -82,6 +82,7 @@ class MovieDetailViewController: MasterViewController {
         super.initUI()
         
         self.bindDataOnView()
+        self.setFavImage()
     }
     
     //MARK:- get data
@@ -194,14 +195,29 @@ class MovieDetailViewController: MasterViewController {
         }
     }
     
-    func hideActivityIndicator(){
+    private func hideActivityIndicator(){
         self.activityIndicator.stopAnimating()
     }
+    
+    private func setFavImage(){
+        guard self.viewModel.checkIsExistMovieOnCache() else {
+            self.favButton.setImageWithTransition(image: #imageLiteral(resourceName: "star"))
+            return;
+        }
+        
+        self.favButton.setImageWithTransition(image: #imageLiteral(resourceName: "selectedStar"))
+    }
+    
+    //MARK:- user did tap
+    @IBAction private func userDidTapOnFavButton(_ sender: Any) {
+        self.viewModel.userDidTapOnFavButton()
+    }
+    
 }
 
 //MARK:- extentions
-extension MovieDetailViewController:ViewModelDelegate{
-    func sucessGetData() {
+extension MovieDetailViewController:MovieDetailViewModelDelegate{
+    func sucessGetMovieDetail() {
         DispatchQueue.main.async {
             print("suceess get movie detail")
             self.hideActivityIndicator()
@@ -209,7 +225,13 @@ extension MovieDetailViewController:ViewModelDelegate{
         }
     }
     
-    func faildGetData() {
+    func faildGetMovieDetail() {
         print("faild get movie detail")
+    }
+    
+    func updateContentOfFavButton() {
+        DispatchQueue.main.async {
+            self.setFavImage()
+        }
     }
 }
