@@ -71,6 +71,8 @@ class MasterTableViewController: MasterViewController, UITableViewDelegate, UITa
         self.activityIndicator = UIActivityIndicatorView(style: .white)
         self.lazyloading.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         self.lazyloading.addSubview(self.activityIndicator!)
+        self.activityIndicator?.addConstraintToCenter()
+        self.lazyloading.isHidden = true
         self.hideLazyLoading()
     }
     
@@ -88,7 +90,6 @@ class MasterTableViewController: MasterViewController, UITableViewDelegate, UITa
     
     func hideLazyLoading(){
         self.activityIndicator?.stopAnimating()
-        self.lazyloading.isHidden = true
         UIView.animate(withDuration: 0.3) {
             self.lazyloading.frame = CGRect(x: 0, y: self.boxView.frame.size.height, width: self.boxView.frame.size.width, height: 40)
         }

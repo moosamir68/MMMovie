@@ -33,6 +33,8 @@ class MainViewController: MasterTableViewController {
     override func initForceUI() {
         super.initForceUI()
         
+        self.initLazyLoading()
+        
         self.searchBar.delegate = self
         self.searchBar.searchBarStyle = .minimal
         self.searchBar.backgroundColor = UIUtility.navigationBarColor()
@@ -58,7 +60,7 @@ class MainViewController: MasterTableViewController {
     
     //get data
     override func getData() {
-        self.viewModel.getActors()
+        _ = self.viewModel.getActors()
     }
     
     //MARK:- tableview delegate
@@ -92,8 +94,11 @@ class MainViewController: MasterTableViewController {
     }
     
     override func loadMoreData() {
+        let canGetMoreItems = self.viewModel.getActors()
+        guard canGetMoreItems else {
+            return;
+        }
         self.showLazyLoading()
-        self.viewModel.getActors()
     }
     
     private func getHeightForRow() ->CGFloat{

@@ -8,9 +8,6 @@
 
 import UIKit
 
-class Extention_UIButton: NSObject {
-
-}
 extension UIButton{
     func setImageWithTransition(image:UIImage, duration:Double = 0.7){
         UIView.transition(with: self, duration: 0.7, options: .transitionFlipFromRight, animations: {

@@ -18,7 +18,7 @@ protocol MainViewModel {
     var actors:[Actor]{get set}
     var errorDescription:String?{get set}
     
-    func getActors()
+    func getActors() ->Bool
     func getActorCellViewModel(row:Int) ->ActorCellViewModel
     func userDidTaponSearchButton(text:String?)
     func userDidTapOnCancelButton(text:String?)
@@ -46,14 +46,14 @@ class MainViewModelImp: MainViewModel {
     
     //MARK:- public methods
     //MARK:- network methods
-    func getActors() {
+    func getActors() ->Bool{
         
         guard !self.isCompletedGetData else{
-            return;
+            return false
         }
         
         guard  !self.isGettingData else {
-            return;
+            return false
         }
         
         self.isGettingData = true
@@ -63,6 +63,8 @@ class MainViewModelImp: MainViewModel {
         }else{
             HttpManager.getPopularActor(filter: self.filter, delegate: self)
         }
+        
+        return true
     }
     
     func getActorCellViewModel(row: Int) -> ActorCellViewModel {
@@ -107,6 +109,7 @@ class MainViewModelImp: MainViewModel {
         self.isCompletedGetData = false
         self.filter.page = 1
     }
+    
     //search actors
     private func searchActors(){
         HttpManager.searchActor(filter: self.filter, delegate: self)
@@ -149,6 +152,9 @@ extension MainViewModelImp:MovieRequestDelegate{
     
     func sucessGetData(item: Codable, request: MovieRequest) {
         self.isGettingData = false
+        if((item as! [Actor]).count == 0 || (item as! [Actor]).count < self.filter.pageSize){
+            self.isCompletedGetData = true
+        }
         self.appendNewItems(actors: item as! [Actor])
         self.appendActorCellViewModelToViewModels(actors: item as! [Actor])
         self.delegate?.sucessGetActors()
