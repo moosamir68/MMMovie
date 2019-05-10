@@ -147,6 +147,18 @@ class MasterTableViewController: MasterViewController, UITableViewDelegate, UITa
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = self.items[indexPath.row]
+            self.userDidTapOnDeleteItem(item: item)
+        }
+    }
+    
+    //this method will overide on subcontroller 
+    func userDidTapOnDeleteItem(item:Codable){
+        
+    }
+    
     //MARK:- load more data
     public func loadMoreData(){
         self.getData()

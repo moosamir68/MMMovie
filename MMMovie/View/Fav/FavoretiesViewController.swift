@@ -70,6 +70,10 @@ class FavoretiesViewController: MasterTableViewController {
         self.showMovieDetailController(movie: movie)
     }
     
+    override func userDidTapOnDeleteItem(item: Codable) {
+        self.viewModel.userWantToDeleteAItemFromCache(movieId: (item as!Movie).id)
+    }
+    
     //MARK:- private methods
     private func getRowHeight() ->CGFloat{
         guard self.checkIsEmptyData() else{

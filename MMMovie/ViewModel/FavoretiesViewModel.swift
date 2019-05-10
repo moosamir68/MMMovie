@@ -18,6 +18,7 @@ protocol FavoretiesViewModel {
     var errorDecsription:String?{get set}
     
     func userChangeStatusExistMovieOnCache(movieId:Int)
+    func userWantToDeleteAItemFromCache(movieId:Int)
 }
 
 class FavoretiesViewModelImp:FavoretiesViewModel{
@@ -32,6 +33,12 @@ class FavoretiesViewModelImp:FavoretiesViewModel{
     init(delegate:FavoretiesViewModelDelegate) {
         self.movies = MovieCacheManager.shared.getMovies()
         self.delegate = delegate
+    }
+    
+    func userWantToDeleteAItemFromCache(movieId: Int) {
+        MovieCacheManager.shared.removeMoviefromCache(movieId: movieId)
+        self.movies = MovieCacheManager.shared.getMovies()
+        self.delegate?.sucessGetMovies()
     }
     
     func userChangeStatusExistMovieOnCache(movieId: Int) {
