@@ -15,6 +15,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var boxView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var favImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     //MARK:- private properties
     private var movie:Movie!
@@ -33,6 +34,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     //MARK:- fill data
     func fillData(movie:Movie){
         self.movie = movie
+        
+        self.nameLabel.text = movie.title
         
         let imagePathString = UrlManager.getMovieImagePath(image: movie.getBackdropPath())
         ImageCacheLoader.sharedInstanse.obtainImageWithPath(imagePath: imagePathString, placeHolder: #imageLiteral(resourceName: "MoviePlaceHolder")) {[weak self] (image, imagePath) in
