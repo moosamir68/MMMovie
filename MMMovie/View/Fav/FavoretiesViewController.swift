@@ -38,6 +38,11 @@ class FavoretiesViewController: MasterTableViewController {
         self.navigationTitleString = "Favoreties movies"
     }
     
+    override func initUI() {
+        super.initUI()
+        self.tableView.separatorStyle = .none
+    }
+    
     //MARK:- tableview methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let errorCell = self.checkAndGetErrorCell()
@@ -76,11 +81,20 @@ class FavoretiesViewController: MasterTableViewController {
         self.showMovieDetailController(movie: movie)
     }
     
-    override func userDidTapOnDeleteItem(item: Codable) {
-        self.viewModel.userWantToDeleteAItemFromCache(movieId: (item as!Movie).id)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = self.items[indexPath.row]
+            self.userDidTapOnDeleteItem(item: item)
+        }
     }
     
     //MARK:- private methods
+    //this method for handle delete item from cashe
+    
+    private func userDidTapOnDeleteItem(item: Codable) {
+        self.viewModel.userWantToDeleteAItemFromCache(movieId: (item as!Movie).id)
+    }
+    
     private func getRowHeight() ->CGFloat{
         guard self.checkIsEmptyData() else{
             return self.tableView.frame.width * 0.562 + 28.0
