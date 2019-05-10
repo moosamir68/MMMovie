@@ -6,6 +6,10 @@
 //  Copyright © 2019 MMMovie. All rights reserved.
 //
 
+protocol FavoretiesControllerDelegate:class {
+    func userChangeStatusExistFromFavortiesController(movieId:Int)
+}
+
 import UIKit
 
 class FavoretiesViewController: MasterTableViewController {
@@ -14,11 +18,13 @@ class FavoretiesViewController: MasterTableViewController {
     
     //MARK:- private proeprties
     private var viewModel:FavoretiesViewModel!
+    private weak var delegate:FavoretiesControllerDelegate?
     
     //MARK:- init
-    init() {
+    init(delegate:FavoretiesControllerDelegate) {
         super.init(nibName: "FavoretiesViewController", bundle: nil)
         self.viewModel = FactoryViewModel.favortiesViewModel(delegate: self)
+        self.delegate = delegate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -93,6 +99,7 @@ class FavoretiesViewController: MasterTableViewController {
 extension FavoretiesViewController:MovieDetailControllerDelegate{
     func userChangeStatusExistMovieOnChache(movieId: Int) {
         self.viewModel.userChangeStatusExistMovieOnCache(movieId: movieId)
+        self.delegate?.userChangeStatusExistFromFavortiesController(movieId: movieId)
     }
 }
 

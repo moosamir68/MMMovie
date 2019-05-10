@@ -22,6 +22,8 @@ protocol MainViewModel {
     func getActorCellViewModel(row:Int) ->ActorCellViewModel
     func userDidTaponSearchButton(text:String?)
     func userDidTapOnCancelButton(text:String?)
+    
+    func getIndexOfItem(movieId:Int) ->Int?
 }
 
 class MainViewModelImp: MainViewModel {
@@ -87,11 +89,21 @@ class MainViewModelImp: MainViewModel {
             self.resetContent()
             self.errorDescription = "Fetching actors"
             self.delegate?.reloadData()
-            self.getActors()
+            _ = self.getActors()
             return;
         }
         
         return;
+    }
+    
+    func getIndexOfItem(movieId:Int = 0) -> Int? {
+        let actor = self.actors.first(where: {($0.movies?.contains(where: {$0.id == movieId}))!})
+        guard let _ = actor else{
+            return nil
+        }
+        
+        let index = self.actors.firstIndex(where: {$0.id == actor?.id})
+        return index
     }
     
     //MARK:- private methods

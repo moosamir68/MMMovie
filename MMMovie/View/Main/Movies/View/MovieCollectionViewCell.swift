@@ -14,6 +14,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var boxView: UIView!
     @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var favImageView: UIImageView!
     
     //MARK:- private properties
     private var movie:Movie!
@@ -41,6 +42,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
             }
             
             self?.movieImageView.image = image
+        }
+        
+        if(MovieCacheManager.shared.checkExistMovieOnCache(movie: movie)){
+            self.favImageView.image = #imageLiteral(resourceName: "selectedStar")
+        }else{
+            self.favImageView.image = #imageLiteral(resourceName: "star")
         }
     }
     

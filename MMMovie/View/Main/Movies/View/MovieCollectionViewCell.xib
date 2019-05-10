@@ -24,12 +24,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MXp-Ts-9l3">
                                 <rect key="frame" x="0.0" y="0.0" width="229" height="191"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="hs7-Na-f0O">
+                                <rect key="frame" x="189" y="8" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="pJT-LV-zr4"/>
+                                    <constraint firstAttribute="height" constant="32" id="tfH-XB-QSa"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hs7-Na-f0O" firstAttribute="top" secondItem="acl-Lv-9QM" secondAttribute="top" constant="8" id="HdO-Bj-3Ib"/>
                             <constraint firstAttribute="trailing" secondItem="MXp-Ts-9l3" secondAttribute="trailing" id="Kyy-bL-EbQ"/>
                             <constraint firstAttribute="bottom" secondItem="MXp-Ts-9l3" secondAttribute="bottom" id="R8G-T4-20X"/>
                             <constraint firstItem="MXp-Ts-9l3" firstAttribute="leading" secondItem="acl-Lv-9QM" secondAttribute="leading" id="TKk-II-w6Q"/>
+                            <constraint firstAttribute="trailing" secondItem="hs7-Na-f0O" secondAttribute="trailing" constant="8" id="a0f-YL-VDM"/>
                             <constraint firstItem="MXp-Ts-9l3" firstAttribute="top" secondItem="acl-Lv-9QM" secondAttribute="top" id="mNv-H1-tGw"/>
                         </constraints>
                     </view>
@@ -45,9 +54,13 @@
             <size key="customSize" width="229" height="191"/>
             <connections>
                 <outlet property="boxView" destination="acl-Lv-9QM" id="khR-ax-Buh"/>
+                <outlet property="favImageView" destination="hs7-Na-f0O" id="dxN-qB-OkZ"/>
                 <outlet property="movieImageView" destination="MXp-Ts-9l3" id="iYY-gk-VOc"/>
             </connections>
             <point key="canvasLocation" x="-5.5999999999999996" y="217.24137931034485"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="star" width="32" height="32"/>
+    </resources>
 </document>

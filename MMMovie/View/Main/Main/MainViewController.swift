@@ -111,7 +111,7 @@ class MainViewController: MasterTableViewController {
     }
     
     @objc private func userDidTapOnFavButton(){
-        let favController = FavoretiesViewController()
+        let favController = FavoretiesViewController(delegate: self)
         self.navigationController?.pushViewController(favController, animated: true)
     }
 }
@@ -170,13 +170,18 @@ extension MainViewController:ActorCellControllerDelegate{
         let actorDetailController = ActorDetailViewController(actor: actor)
         self.navigationController?.pushViewController(actorDetailController, animated: true)
     }
-    
 }
 
 //MARK:- movie detail controller delegate
 extension MainViewController:MovieDetailControllerDelegate{
     func userChangeStatusExistMovieOnChache(movieId: Int) {
+        let index = self.viewModel.getIndexOfItem(movieId: movieId)
+        guard let _ = index else {
+            return;
+        }
         
+        let indexPath = IndexPath(row: index!, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 
@@ -190,5 +195,12 @@ extension MainViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.dismissKeyboard()
         self.viewModel.userDidTaponSearchButton(text: searchBar.text)
+    }
+}
+
+//methods of favoreties controller
+extension MainViewController:FavoretiesControllerDelegate{
+    func userChangeStatusExistFromFavortiesController(movieId: Int) {
+        self.userChangeStatusExistMovieOnChache(movieId: movieId)
     }
 }
